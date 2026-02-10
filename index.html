@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Project Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Research Project Dashboard</h1>
+        <p class="subtitle">Semi-abandoned ideas and fallow data seeking collaborators</p>
+    </header>
+
+    <main>
+        <section class="controls">
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search projects..." aria-label="Search projects">
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filter-discipline">Discipline</label>
+                    <select id="filter-discipline">
+                        <option value="">All Disciplines</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status">
+                        <option value="">All Statuses</option>
+                        <option value="Idea only">Idea only</option>
+                        <option value="Data collected">Data collected</option>
+                        <option value="Partial draft">Partial draft</option>
+                        <option value="Stalled">Stalled</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-data">Data Collected</label>
+                    <select id="filter-data">
+                        <option value="">Any</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Partial">Partial</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-seeking">Seeking</label>
+                    <select id="filter-seeking">
+                        <option value="">All</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button id="clear-filters" class="btn-secondary">Clear Filters</button>
+                <a href="#" id="submit-link" class="btn-primary" target="_blank">Submit a Project</a>
+            </div>
+        </section>
+
+        <section class="results-info">
+            <span id="results-count">Loading...</span>
+        </section>
+
+        <section id="projects" class="project-grid">
+            <!-- Projects will be rendered here -->
+        </section>
+
+        <div id="loading" class="loading">
+            <p>Loading projects...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            <p>Unable to load projects. Please check the configuration.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Have an idea gathering dust? <a href="#" id="submit-link-footer" target="_blank">Add it to the dashboard</a></p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
