@@ -428,7 +428,7 @@ main {
 footer {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem 3rem;
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
@@ -442,6 +442,25 @@ footer a {
 
 footer a:hover {
     color: var(--green);
+}
+
+.footer-author {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.footer-author .logo {
+    font-size: 1rem;
+    padding: 0.35rem 0.5rem;
+    margin-bottom: 0;
 }
 
 /* Empty State */
