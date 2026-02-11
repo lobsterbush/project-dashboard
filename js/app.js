@@ -19,7 +19,11 @@ const CONFIG = {
     
     // Google Sheets API key (optional - only needed if sheet is not published to web)
     // For published sheets, we use the CSV export which doesn't need an API key
-    API_KEY: ''
+    API_KEY: '',
+    
+    // Use demo data from local CSV file (set to false once Google Sheet is configured)
+    USE_DEMO_DATA: true,
+    DEMO_DATA_URL: 'data/seed_projects.csv'
 };
 
 // ============================================================================
@@ -74,8 +78,15 @@ const elements = {
 // ============================================================================
 
 async function fetchProjects() {
-    // Construct the CSV export URL for the published Google Sheet
-    const csvUrl = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}`;
+    let csvUrl;
+    
+    if (CONFIG.USE_DEMO_DATA) {
+        // Use local demo data
+        csvUrl = CONFIG.DEMO_DATA_URL;
+    } else {
+        // Construct the CSV export URL for the published Google Sheet
+        csvUrl = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}`;
+    }
     
     try {
         const response = await fetch(csvUrl);
@@ -404,8 +415,8 @@ function setupEventListeners() {
 async function init() {
     setupEventListeners();
     
-    // Check if configuration is set
-    if (CONFIG.SHEET_ID === 'YOUR_SHEET_ID_HERE') {
+    // Check if configuration is set (skip check if using demo data)
+    if (!CONFIG.USE_DEMO_DATA && CONFIG.SHEET_ID === 'YOUR_SHEET_ID_HERE') {
         elements.loading.style.display = 'none';
         elements.error.style.display = 'block';
         elements.error.innerHTML = `
