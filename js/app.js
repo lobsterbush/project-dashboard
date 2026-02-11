@@ -9,20 +9,20 @@
 
 const CONFIG = {
     // Your Google Sheet ID (from the URL: https://docs.google.com/spreadsheets/d/SHEET_ID/edit)
-    SHEET_ID: 'YOUR_SHEET_ID_HERE',
+    SHEET_ID: '1wC57FDGLijnPiXQ6NIpGmiVWicnuOT1HwMBlnh-W_PY',
     
     // The sheet/tab name (default is usually "Form Responses 1" for form-linked sheets)
     SHEET_NAME: 'Form Responses 1',
     
     // Your Google Form URL for submissions
-    FORM_URL: 'YOUR_GOOGLE_FORM_URL_HERE',
+    FORM_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSe8guiY6444i5NTC86ROLXzd5kWNUZmhLqUrWWXFvfQzpw1sw/viewform',
     
     // Google Sheets API key (optional - only needed if sheet is not published to web)
     // For published sheets, we use the CSV export which doesn't need an API key
     API_KEY: '',
     
     // Use demo data from local CSV file (set to false once Google Sheet is configured)
-    USE_DEMO_DATA: true,
+    USE_DEMO_DATA: false,
     DEMO_DATA_URL: 'data/seed_projects.csv'
 };
 
@@ -40,11 +40,10 @@ const COLUMNS = {
     METHODOLOGY: 5,
     DATA_COLLECTED: 6,
     STATUS: 7,
-    COAUTHORS: 8,
-    SEEKING: 9,
-    TARGET_JOURNALS: 10,
-    LINK: 11,
-    CONTACT: 12
+    SEEKING: 8,
+    TARGET_JOURNALS: 9,
+    LINK: 10,
+    CONTACT: 11
 };
 
 // ============================================================================
@@ -121,7 +120,6 @@ function parseCSV(csvText) {
                 methodology: row[COLUMNS.METHODOLOGY] || '',
                 dataCollected: row[COLUMNS.DATA_COLLECTED] || '',
                 status: row[COLUMNS.STATUS] || '',
-                coauthors: row[COLUMNS.COAUTHORS] || '',
                 seeking: row[COLUMNS.SEEKING] || '',
                 targetJournals: row[COLUMNS.TARGET_JOURNALS] || '',
                 link: row[COLUMNS.LINK] || '',
@@ -269,12 +267,6 @@ function renderProjectCard(project) {
                     <span class="meta-label">Data:</span>
                     <span class="meta-value">${escapeHtml(project.dataCollected)}</span>
                 </div>
-                ${project.coauthors ? `
-                <div class="meta-row">
-                    <span class="meta-label">Coauthors:</span>
-                    <span class="meta-value">${escapeHtml(project.coauthors)}</span>
-                </div>
-                ` : ''}
                 ${project.seeking ? `
                 <div class="meta-row">
                     <span class="meta-label">Seeking:</span>
