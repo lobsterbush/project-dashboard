@@ -472,6 +472,90 @@ footer a:hover {
     font-family: var(--font-mono);
 }
 
+/* Password Overlay */
+#password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.password-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 24px var(--shadow);
+    max-width: 360px;
+    width: 90%;
+}
+
+.password-modal .logo {
+    margin-bottom: 1rem;
+}
+
+.password-modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.password-modal p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.password-modal input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.password-modal input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.password-modal button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.password-modal button:hover {
+    background: var(--accent-hover);
+}
+
+#password-error {
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    min-height: 1.2em;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     header {
