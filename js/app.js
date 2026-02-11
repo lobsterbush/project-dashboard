@@ -245,46 +245,61 @@ function renderProjectCard(project) {
         ? `<a href="${escapeHtml(project.link)}" target="_blank">${escapeHtml(project.name)}</a>`
         : escapeHtml(project.name);
     
+    const seekingTags = project.seeking ? project.seeking.split(',').map(s => s.trim()).filter(s => s) : [];
+    const seekingHtml = seekingTags.length > 0 ? `
+        <div class="seeking-tags">
+            ${seekingTags.map(s => `<span class="seeking-tag">${escapeHtml(s)}</span>`).join('')}
+        </div>
+    ` : '';
+    
     return `
         <article class="project-card">
             <h2>${titleHtml}</h2>
             <p class="project-description">${escapeHtml(project.description)}</p>
             
-            <div class="project-meta">
-                <div class="meta-row">
-                    <span class="meta-label">Status:</span>
-                    <span class="meta-value"><span class="status-badge ${statusClass}">${escapeHtml(project.status)}</span></span>
+            <div class="project-meta-grid">
+                <div class="meta-item">
+                    <span class="meta-icon">📊</span>
+                    <span class="meta-content">
+                        <span class="meta-label">Status</span>
+                        <span class="status-badge ${statusClass}">${escapeHtml(project.status)}</span>
+                    </span>
                 </div>
-                <div class="meta-row">
-                    <span class="meta-label">Discipline:</span>
-                    <span class="meta-value">${escapeHtml(project.discipline)}</span>
+                <div class="meta-item">
+                    <span class="meta-icon">🎯</span>
+                    <span class="meta-content">
+                        <span class="meta-label">Discipline</span>
+                        <span class="meta-value">${escapeHtml(project.discipline)}</span>
+                    </span>
                 </div>
-                <div class="meta-row">
-                    <span class="meta-label">Methodology:</span>
-                    <span class="meta-value">${escapeHtml(project.methodology)}</span>
+                <div class="meta-item">
+                    <span class="meta-icon">🔬</span>
+                    <span class="meta-content">
+                        <span class="meta-label">Methods</span>
+                        <span class="meta-value">${escapeHtml(project.methodology)}</span>
+                    </span>
                 </div>
-                <div class="meta-row">
-                    <span class="meta-label">Data:</span>
-                    <span class="meta-value">${escapeHtml(project.dataCollected)}</span>
+                <div class="meta-item">
+                    <span class="meta-icon">💾</span>
+                    <span class="meta-content">
+                        <span class="meta-label">Data</span>
+                        <span class="meta-value data-${project.dataCollected.toLowerCase()}">${escapeHtml(project.dataCollected)}</span>
+                    </span>
                 </div>
-                ${project.seeking ? `
-                <div class="meta-row">
-                    <span class="meta-label">Seeking:</span>
-                    <span class="meta-value">${escapeHtml(project.seeking)}</span>
-                </div>
-                ` : ''}
-                ${project.targetJournals ? `
-                <div class="meta-row">
-                    <span class="meta-label">Targets:</span>
-                    <span class="meta-value">${escapeHtml(project.targetJournals)}</span>
-                </div>
-                ` : ''}
             </div>
+            
+            ${seekingHtml}
+            
+            ${project.targetJournals ? `
+            <div class="target-journals">
+                <span class="meta-label">Target journals:</span> ${escapeHtml(project.targetJournals)}
+            </div>
+            ` : ''}
             
             ${keywordsHtml}
             
             <div class="project-footer">
-                <a href="mailto:${escapeHtml(project.contact)}" class="contact-link">Contact</a>
+                <a href="mailto:${escapeHtml(project.contact)}" class="contact-link">${escapeHtml(project.contact)}</a>
                 <span class="date-added">Added ${dateFormatted}</span>
             </div>
         </article>
