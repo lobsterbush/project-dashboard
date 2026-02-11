@@ -299,7 +299,7 @@ function renderProjectCard(project) {
             ${keywordsHtml}
             
             <div class="project-footer">
-                <a href="mailto:${escapeHtml(project.contact)}" class="contact-link">${escapeHtml(project.contact)}</a>
+                <span class="contact-label">Contact:</span> <a href="mailto:${escapeHtml(project.contact)}" class="contact-link">${escapeHtml(project.contact)}</a>
                 <span class="date-added">Added ${dateFormatted}</span>
             </div>
         </article>

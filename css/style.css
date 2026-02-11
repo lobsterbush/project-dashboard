@@ -352,7 +352,8 @@ main {
     font-size: 0.8rem;
     color: var(--text-secondary);
     font-family: var(--font-sans);
-    line-height: 1.3;
+    line-height: 1.2;
+    word-break: break-word;
 }
 
 .meta-value.data-yes {
@@ -422,10 +423,14 @@ main {
     font-family: var(--font-mono);
 }
 
+.contact-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
 .contact-link {
     color: var(--accent);
     text-decoration: none;
-    font-weight: 500;
 }
 
 .contact-link:hover {
