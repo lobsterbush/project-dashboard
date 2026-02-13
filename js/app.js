@@ -255,10 +255,10 @@ function renderProjectCard(project) {
         ? `<a href="${escapeHtml(project.link)}" target="_blank">${escapeHtml(project.name)}</a>`
         : escapeHtml(project.name);
     
-    const seekingTags = project.seeking ? project.seeking.split(',').map(s => s.trim()).filter(s => s) : [];
-    const seekingHtml = seekingTags.length > 0 ? `
+    const helpNeededTags = project.seeking ? project.seeking.split(',').map(s => s.trim()).filter(s => s) : [];
+    const helpNeededHtml = helpNeededTags.length > 0 ? `
         <div class="seeking-tags">
-            ${seekingTags.map(s => `<span class="seeking-tag">${escapeHtml(s)}</span>`).join('')}
+            ${helpNeededTags.map(s => `<span class="seeking-tag">${escapeHtml(s)}</span>`).join('')}
         </div>
     ` : '';
     
@@ -307,7 +307,7 @@ function renderProjectCard(project) {
                 </div>
             </div>
             
-            ${seekingHtml}
+            ${helpNeededHtml}
             
             ${project.targetJournals ? `
             <div class="target-journals">
@@ -378,14 +378,14 @@ function populateDynamicFilters() {
         elements.filterDiscipline.appendChild(option);
     });
     
-    // Get unique "seeking" values
-    const seekingValues = new Set();
+    // Get unique "help needed" values
+    const helpNeededValues = new Set();
     allProjects.forEach(p => {
         if (p.seeking) {
-            p.seeking.split(',').forEach(s => seekingValues.add(s.trim()));
+            p.seeking.split(',').forEach(s => helpNeededValues.add(s.trim()));
         }
     });
-    [...seekingValues].sort().forEach(s => {
+    [...helpNeededValues].sort().forEach(s => {
         const option = document.createElement('option');
         option.value = s;
         option.textContent = s;

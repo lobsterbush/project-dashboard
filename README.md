@@ -23,7 +23,7 @@ Create a new Google Form with the following questions (in this exact order):
 6. **Methodological Approach** (Dropdown or Short answer) - e.g., Survey experiment, Archival, Qualitative
 7. **Data Collected** (Multiple choice: Yes / No / Partial / N/A)
 8. **Status** (Dropdown: Idea only / Outline / Data collected / Partial draft / Stalled)
-9. **Seeking** (Checkboxes) - Coauthors, Methods expertise, Funding, Data access, etc.
+9. **Help needed** (Checkboxes) - Coauthors, Methods expertise, Funding, Data access, etc.
 10. **Target Journals** (Short answer) - Potential outlets
 11. **Link** (Short answer) - GitHub repo or Google Drive link (optional)
 12. **Contact Email** (Short answer, required)

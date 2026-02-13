@@ -34,6 +34,11 @@ To complete the Research Backlog updates, you need to manually update the Google
 - Add option: **Outline**
 - Full list should be: Idea only, Outline, Data collected, Partial draft, Stalled
 
+### 5. Rename "Seeking" question
+**Question 9: Help needed** (update the label from "Seeking")
+- Keep all existing checkbox options (Coauthors, Methods expertise, Funding, Data access, etc.)
+- Only change the question label/title
+
 ## After Making Changes
 
 1. The Google Sheet will automatically update with new columns
@@ -48,7 +53,7 @@ To complete the Research Backlog updates, you need to manually update the Google
    7. Methodological Approach
    8. Data Collected
    9. Status
-   10. Seeking
+   10. Help needed
    11. Target journals
    12. Project link
    13. Contact email

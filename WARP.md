@@ -40,7 +40,7 @@ Google Form → Google Sheets → GitHub Pages (fetches CSV on load)
 7. Methodological Approach
 8. Data Collected (Yes/No/Partial/N/A)
 9. Status (Idea only/Outline/Data collected/Partial draft/Stalled)
-10. Seeking (comma-separated)
+10. Help needed (comma-separated)
 11. Target journals
 12. Project link
 13. Contact email
