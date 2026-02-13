@@ -3,6 +3,7 @@
 **URL**: https://researchbacklog.org  
 **Repo**: https://github.com/lobsterbush/project-dashboard  
 **Created**: February 11, 2026  
+**Last Updated**: February 13, 2026  
 **Password**: `erdosrules`
 
 ## Overview
@@ -45,20 +46,24 @@ Google Form → Google Sheets → GitHub Pages (fetches CSV on load)
 12. Contact email
 13. Type of paper (Empirical/Theoretical/Empirical and theoretical)
 
+**Note**: Type of paper appears last because Google Forms adds new questions to existing linked sheets at the end, regardless of where they appear in the form (it's question 4 in the form but column 13 in the sheet).
+
 ## Files
 
 ```
 project-dashboard/
-├── index.html          # Main page with password overlay
-├── CNAME               # Custom domain (researchbacklog.org)
+├── index.html                      # Main page with password overlay
+├── CNAME                           # Custom domain (researchbacklog.org)
+├── WARP.md                         # This file - project documentation
+├── FORM_UPDATE_INSTRUCTIONS.md    # Guide for updating Google Form
+├── README.md                       # Setup instructions
 ├── css/
-│   └── style.css       # Styling (charlescrabtree.org inspired)
+│   └── style.css                   # Styling (charlescrabtree.org inspired)
 ├── js/
-│   ├── app.js          # Data fetching, filtering, rendering
-│   └── auth.js         # Client-side password protection
-├── data/
-│   └── seed_projects.csv   # Backup/reference data
-└── README.md           # Setup instructions
+│   ├── app.js                      # Data fetching, filtering, rendering
+│   └── auth.js                     # Client-side password protection
+└── data/
+    └── seed_projects.csv           # Backup/reference data
 ```
 
 ## Configuration
@@ -107,6 +112,16 @@ CNAME: www → lobsterbush.github.io
 10. Formal vs. Informal Repression (Belarus/Ukraine)
 11. European Protest Event Data (Francisco dataset)
 12. Dynamics of Contentious Politics (ML on Francisco data)
+
+## Recent Updates
+
+### February 13, 2026
+- Added "Type of paper" field (Empirical/Theoretical/Empirical and theoretical)
+- Changed "Discipline" to "(Sub-)discipline" with expanded options
+- Added "N/A" option to Data Collected field
+- Added "Outline" option to Status field
+- Renamed "Seeking" to "Help needed"
+- Fixed column mapping to match Google Sheet structure (Type of paper at position 13)
 
 ## Deployment
 
