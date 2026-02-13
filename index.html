@@ -21,6 +21,9 @@
     <header>
         <h1>Research Backlog</h1>
         <p class="subtitle">Dormant ideas and fallow data seeking collaborators</p>
+        <div class="header-actions">
+            <a href="#" id="submit-link-header" class="btn-primary btn-large" target="_blank">Submit a Project</a>
+        </div>
     </header>
 
     <main>
@@ -77,12 +80,12 @@
             
             <div class="actions">
                 <button id="clear-filters" class="btn-secondary">Clear Filters</button>
-                <a href="#" id="submit-link" class="btn-primary" target="_blank">Submit a Project</a>
             </div>
         </section>
 
         <section class="results-info">
             <span id="results-count">Loading...</span>
+            <span id="last-updated" class="last-updated"></span>
         </section>
 
         <section id="projects" class="project-grid">
@@ -99,11 +102,7 @@
     </main>
 
     <footer>
-        <p>Have an idea gathering dust? <a href="#" id="submit-link-footer" target="_blank">Add it to the dashboard</a></p>
-        <div class="footer-author">
-            <span class="logo">CC</span>
-            <span>Charles Crabtree · <a href="https://charlescrabtree.org">charlescrabtree.org</a></span>
-        </div>
+        <p>Problems? Please contact <a href="https://charlescrabtree.org" target="_blank">Charles Crabtree</a> at <a href="mailto:charles.crabtree@monash.edu">charles.crabtree@monash.edu</a></p>
     </footer>
 
     <script src="js/app.js"></script>

@@ -66,10 +66,10 @@ const elements = {
     filterData: document.getElementById('filter-data'),
     filterSeeking: document.getElementById('filter-seeking'),
     clearFilters: document.getElementById('clear-filters'),
-    submitLink: document.getElementById('submit-link'),
-    submitLinkFooter: document.getElementById('submit-link-footer'),
+    submitLinkHeader: document.getElementById('submit-link-header'),
     projectsGrid: document.getElementById('projects'),
     resultsCount: document.getElementById('results-count'),
+    lastUpdated: document.getElementById('last-updated'),
     loading: document.getElementById('loading'),
     error: document.getElementById('error')
 };
@@ -256,11 +256,7 @@ function renderProjectCard(project) {
         : escapeHtml(project.name);
     
     const helpNeededTags = project.seeking ? project.seeking.split(',').map(s => s.trim()).filter(s => s) : [];
-    const helpNeededHtml = helpNeededTags.length > 0 ? `
-        <div class="seeking-tags">
-            ${helpNeededTags.map(s => `<span class="seeking-tag">${escapeHtml(s)}</span>`).join('')}
-        </div>
-    ` : '';
+    const targetJournalsList = project.targetJournals ? project.targetJournals.split(',').map(j => j.trim()).filter(j => j) : [];
     
     return `
         <article class="project-card">
@@ -307,11 +303,27 @@ function renderProjectCard(project) {
                 </div>
             </div>
             
-            ${helpNeededHtml}
+            ${helpNeededTags.length > 0 ? `
+            <div class="info-section">
+                <div class="info-header">
+                    <span class="meta-icon">🤝</span>
+                    <span class="meta-label">Help needed</span>
+                </div>
+                <div class="info-tags">
+                    ${helpNeededTags.map(s => `<span class="info-tag help-tag">${escapeHtml(s)}</span>`).join('')}
+                </div>
+            </div>
+            ` : ''}
             
-            ${project.targetJournals ? `
-            <div class="target-journals">
-                <span class="meta-label">Target journals:</span> ${escapeHtml(project.targetJournals)}
+            ${targetJournalsList.length > 0 ? `
+            <div class="info-section">
+                <div class="info-header">
+                    <span class="meta-icon">📚</span>
+                    <span class="meta-label">Target journals</span>
+                </div>
+                <div class="info-tags">
+                    ${targetJournalsList.map(j => `<span class="info-tag journal-tag">${escapeHtml(j)}</span>`).join('')}
+                </div>
             </div>
             ` : ''}
             
@@ -356,6 +368,22 @@ function updateResultsCount() {
         elements.resultsCount.textContent = `Showing all ${total} projects`;
     } else {
         elements.resultsCount.textContent = `Showing ${showing} of ${total} projects`;
+    }
+    
+    // Show last updated timestamp
+    if (allProjects.length > 0) {
+        const timestamps = allProjects.map(p => new Date(p.timestamp)).filter(d => !isNaN(d));
+        if (timestamps.length > 0) {
+            const mostRecent = new Date(Math.max(...timestamps));
+            const formattedDate = mostRecent.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            elements.lastUpdated.textContent = `Last updated: ${formattedDate}`;
+        }
     }
 }
 
@@ -440,9 +468,8 @@ function setupEventListeners() {
     // Clear filters button
     elements.clearFilters.addEventListener('click', clearFilters);
     
-    // Set form URLs
-    elements.submitLink.href = CONFIG.FORM_URL;
-    elements.submitLinkFooter.href = CONFIG.FORM_URL;
+    // Set form URL
+    elements.submitLinkHeader.href = CONFIG.FORM_URL;
 }
 
 // ============================================================================

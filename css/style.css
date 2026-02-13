@@ -88,6 +88,17 @@ header {
     text-align: center;
 }
 
+.header-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-large {
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+}
+
 .logo {
     display: inline-block;
     font-family: var(--font-mono);
@@ -258,6 +269,17 @@ main {
     font-size: 0.875rem;
     color: var(--text-muted);
     font-family: var(--font-mono);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.last-updated {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
 }
 
 /* Project Grid */
@@ -369,30 +391,57 @@ main {
     color: var(--text-muted);
 }
 
-/* Seeking Tags */
-.seeking-tags {
+/* Info Sections (Help needed, Target journals) */
+.info-section {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-header .meta-icon {
+    font-size: 1rem;
+}
+
+.info-header .meta-label {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.info-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem;
-    margin-bottom: 0.75rem;
 }
 
-.seeking-tag {
-    background: var(--green-subtle);
-    color: var(--green);
+.info-tag {
     padding: 0.25rem 0.6rem;
     border-radius: 4px;
     font-size: 0.75rem;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-weight: 500;
+    line-height: 1.3;
 }
 
-/* Target Journals */
-.target-journals {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-    font-style: italic;
+.help-tag {
+    background: var(--green-subtle);
+    color: var(--green);
+}
+
+.journal-tag {
+    background: rgba(0, 102, 204, 0.1);
+    color: var(--accent);
 }
 
 .keywords {
@@ -468,6 +517,11 @@ main {
     color: #b45309;
 }
 
+.status-outline {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+}
+
 .status-stalled {
     background: rgba(239, 68, 68, 0.1);
     color: #dc2626;
@@ -494,6 +548,12 @@ footer {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+}
+
+footer p {
+    font-family: var(--font-sans);
 }
 
 footer a {
@@ -504,25 +564,6 @@ footer a {
 
 footer a:hover {
     color: var(--green);
-}
-
-.footer-author {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-}
-
-.footer-author .logo {
-    font-size: 1rem;
-    padding: 0.35rem 0.5rem;
-    margin-bottom: 0;
 }
 
 /* Empty State */
