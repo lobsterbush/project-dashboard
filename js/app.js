@@ -36,14 +36,15 @@ const COLUMNS = {
     NAME: 1,
     DESCRIPTION: 2,
     KEYWORDS: 3,
-    DISCIPLINE: 4,
-    METHODOLOGY: 5,
-    DATA_COLLECTED: 6,
-    STATUS: 7,
-    SEEKING: 8,
-    TARGET_JOURNALS: 9,
-    LINK: 10,
-    CONTACT: 11
+    TYPE_OF_PAPER: 4,
+    DISCIPLINE: 5,
+    METHODOLOGY: 6,
+    DATA_COLLECTED: 7,
+    STATUS: 8,
+    SEEKING: 9,
+    TARGET_JOURNALS: 10,
+    LINK: 11,
+    CONTACT: 12
 };
 
 // ============================================================================
@@ -59,6 +60,7 @@ let filteredProjects = [];
 
 const elements = {
     search: document.getElementById('search'),
+    filterTypeOfPaper: document.getElementById('filter-type-of-paper'),
     filterDiscipline: document.getElementById('filter-discipline'),
     filterStatus: document.getElementById('filter-status'),
     filterData: document.getElementById('filter-data'),
@@ -116,6 +118,7 @@ function parseCSV(csvText) {
                 name: row[COLUMNS.NAME] || '',
                 description: row[COLUMNS.DESCRIPTION] || '',
                 keywords: row[COLUMNS.KEYWORDS] || '',
+                typeOfPaper: row[COLUMNS.TYPE_OF_PAPER] || '',
                 discipline: row[COLUMNS.DISCIPLINE] || '',
                 methodology: row[COLUMNS.METHODOLOGY] || '',
                 dataCollected: row[COLUMNS.DATA_COLLECTED] || '',
@@ -164,6 +167,7 @@ function parseCSVRow(row) {
 
 function applyFilters() {
     const searchTerm = elements.search.value.toLowerCase();
+    const typeOfPaperFilter = elements.filterTypeOfPaper.value;
     const disciplineFilter = elements.filterDiscipline.value;
     const statusFilter = elements.filterStatus.value;
     const dataFilter = elements.filterData.value;
@@ -176,6 +180,11 @@ function applyFilters() {
             if (!searchableText.includes(searchTerm)) {
                 return false;
             }
+        }
+        
+        // Type of paper filter
+        if (typeOfPaperFilter && project.typeOfPaper !== typeOfPaperFilter) {
+            return false;
         }
         
         // Discipline filter
@@ -207,6 +216,7 @@ function applyFilters() {
 
 function clearFilters() {
     elements.search.value = '';
+    elements.filterTypeOfPaper.value = '';
     elements.filterDiscipline.value = '';
     elements.filterStatus.value = '';
     elements.filterData.value = '';
@@ -265,10 +275,19 @@ function renderProjectCard(project) {
                         <span class="status-badge ${statusClass}">${escapeHtml(project.status)}</span>
                     </span>
                 </div>
+                ${project.typeOfPaper ? `
+                <div class="meta-item">
+                    <span class="meta-icon">📄</span>
+                    <span class="meta-content">
+                        <span class="meta-label">Type</span>
+                        <span class="meta-value">${escapeHtml(project.typeOfPaper)}</span>
+                    </span>
+                </div>
+                ` : ''}
                 <div class="meta-item">
                     <span class="meta-icon">🎯</span>
                     <span class="meta-content">
-                        <span class="meta-label">Discipline</span>
+                        <span class="meta-label">(Sub-)discipline</span>
                         <span class="meta-value">${escapeHtml(project.discipline)}</span>
                     </span>
                 </div>
@@ -283,7 +302,7 @@ function renderProjectCard(project) {
                     <span class="meta-icon">💾</span>
                     <span class="meta-content">
                         <span class="meta-label">Data</span>
-                        <span class="meta-value data-${project.dataCollected.toLowerCase()}">${escapeHtml(project.dataCollected)}</span>
+                        <span class="meta-value data-${project.dataCollected.toLowerCase().replace(/\//, '-')}">${escapeHtml(project.dataCollected)}</span>
                     </span>
                 </div>
             </div>
@@ -324,6 +343,7 @@ function getStatusClass(status) {
     if (statusLower.includes('idea')) return 'status-idea';
     if (statusLower.includes('data')) return 'status-data';
     if (statusLower.includes('draft')) return 'status-draft';
+    if (statusLower.includes('outline')) return 'status-outline';
     if (statusLower.includes('stalled')) return 'status-stalled';
     return '';
 }
@@ -340,6 +360,15 @@ function updateResultsCount() {
 }
 
 function populateDynamicFilters() {
+    // Get unique type of paper values
+    const typeOfPapers = [...new Set(allProjects.map(p => p.typeOfPaper).filter(t => t))].sort();
+    typeOfPapers.forEach(t => {
+        const option = document.createElement('option');
+        option.value = t;
+        option.textContent = t;
+        elements.filterTypeOfPaper.appendChild(option);
+    });
+    
     // Get unique disciplines
     const disciplines = [...new Set(allProjects.map(p => p.discipline).filter(d => d))].sort();
     disciplines.forEach(d => {
@@ -402,6 +431,7 @@ function setupEventListeners() {
     });
     
     // Filter dropdowns
+    elements.filterTypeOfPaper.addEventListener('change', applyFilters);
     elements.filterDiscipline.addEventListener('change', applyFilters);
     elements.filterStatus.addEventListener('change', applyFilters);
     elements.filterData.addEventListener('change', applyFilters);

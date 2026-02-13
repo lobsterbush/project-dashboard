@@ -35,14 +35,15 @@ Google Form → Google Sheets → GitHub Pages (fetches CSV on load)
 2. Project name
 3. Description
 4. Keywords (comma-separated)
-5. Discipline
-6. Methodological Approach
-7. Data Collected (Yes/No/Partial)
-8. Status (Idea only/Data collected/Partial draft/Stalled)
-9. Seeking (comma-separated)
-10. Target journals
-11. Project link
-12. Contact email
+5. Type of paper (Empirical/Theoretical/Empirical and Theoretical)
+6. (Sub-)discipline (Political Science/Comparative Politics/International Relations/Political Theory/Other)
+7. Methodological Approach
+8. Data Collected (Yes/No/Partial/N/A)
+9. Status (Idea only/Outline/Data collected/Partial draft/Stalled)
+10. Seeking (comma-separated)
+11. Target journals
+12. Project link
+13. Contact email
 
 ## Files
 

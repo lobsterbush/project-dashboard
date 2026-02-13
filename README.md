@@ -18,11 +18,11 @@ Create a new Google Form with the following questions (in this exact order):
 1. **Project Name** (Short answer, required)
 2. **Description** (Paragraph) - Brief summary of the project idea
 3. **Keywords** (Short answer) - Comma-separated tags
-4. **Discipline** (Dropdown or Short answer) - e.g., Political Science, Sociology, Economics
-5. **Methodological Approach** (Dropdown or Short answer) - e.g., Survey experiment, Archival, Qualitative
-6. **Data Collected** (Multiple choice: Yes / No / Partial)
-7. **Status** (Dropdown: Idea only / Data collected / Partial draft / Stalled)
-8. **Existing Coauthors** (Short answer) - Names or "None"
+4. **Type of Paper** (Dropdown: Empirical / Theoretical / Empirical and Theoretical)
+5. **(Sub-)discipline** (Dropdown) - Options: Political Science, Comparative Politics, International Relations, Political Theory, Other: Please Specify (...........)
+6. **Methodological Approach** (Dropdown or Short answer) - e.g., Survey experiment, Archival, Qualitative
+7. **Data Collected** (Multiple choice: Yes / No / Partial / N/A)
+8. **Status** (Dropdown: Idea only / Outline / Data collected / Partial draft / Stalled)
 9. **Seeking** (Checkboxes) - Coauthors, Methods expertise, Funding, Data access, etc.
 10. **Target Journals** (Short answer) - Potential outlets
 11. **Link** (Short answer) - GitHub repo or Google Drive link (optional)
@@ -74,10 +74,19 @@ If your form questions are in a different order, update the `COLUMNS` object in 
 
 ```javascript
 const COLUMNS = {
-    TIMESTAMP: 0,    // Always column 0 for Google Forms
+    TIMESTAMP: 0,        // Always column 0 for Google Forms
     NAME: 1,
     DESCRIPTION: 2,
-    // ... etc
+    KEYWORDS: 3,
+    TYPE_OF_PAPER: 4,
+    DISCIPLINE: 5,
+    METHODOLOGY: 6,
+    DATA_COLLECTED: 7,
+    STATUS: 8,
+    SEEKING: 9,
+    TARGET_JOURNALS: 10,
+    LINK: 11,
+    CONTACT: 12
 };
 ```
 

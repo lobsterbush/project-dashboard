@@ -31,7 +31,14 @@
             
             <div class="filters">
                 <div class="filter-group">
-                    <label for="filter-discipline">Discipline</label>
+                    <label for="filter-type-of-paper">Type of Paper</label>
+                    <select id="filter-type-of-paper">
+                        <option value="">All Types</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-discipline">(Sub-)discipline</label>
                     <select id="filter-discipline">
                         <option value="">All Disciplines</option>
                     </select>
@@ -42,6 +49,7 @@
                     <select id="filter-status">
                         <option value="">All Statuses</option>
                         <option value="Idea only">Idea only</option>
+                        <option value="Outline">Outline</option>
                         <option value="Data collected">Data collected</option>
                         <option value="Partial draft">Partial draft</option>
                         <option value="Stalled">Stalled</option>
@@ -55,6 +63,7 @@
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                         <option value="Partial">Partial</option>
+                        <option value="N/A">N/A</option>
                     </select>
                 </div>
                 
