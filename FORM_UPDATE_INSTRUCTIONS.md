@@ -43,20 +43,24 @@ To complete the Research Backlog updates, you need to manually update the Google
 
 1. The Google Sheet will automatically update with new columns
 2. Wait for at least one new submission OR manually add a test row to verify column order
-3. Verify that the column order matches:
+3. Verify that the column order in the sheet is:
    1. Timestamp
    2. Project name
    3. Description
    4. Keywords
-   5. Type of paper
-   6. (Sub-)discipline
-   7. Methodological Approach
-   8. Data Collected
-   9. Status
-   10. Help needed
-   11. Target journals
-   12. Project link
-   13. Contact email
+   5. (Sub-)discipline
+   6. Methodological Approach
+   7. Data Collected
+   8. Status
+   9. Help needed
+   10. Target journals
+   11. Project link
+   12. Contact email
+   13. Type of paper
+   
+   Note: Google Forms adds new questions to existing linked sheets at the END,
+   regardless of where they appear in the form. This is why "Type of paper"
+   appears last even though it's question 4 in the form.
 
 4. The website will automatically fetch the updated data on next page load
 

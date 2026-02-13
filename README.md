@@ -78,15 +78,15 @@ const COLUMNS = {
     NAME: 1,
     DESCRIPTION: 2,
     KEYWORDS: 3,
-    TYPE_OF_PAPER: 4,
-    DISCIPLINE: 5,
-    METHODOLOGY: 6,
-    DATA_COLLECTED: 7,
-    STATUS: 8,
-    SEEKING: 9,
-    TARGET_JOURNALS: 10,
-    LINK: 11,
-    CONTACT: 12
+    DISCIPLINE: 4,
+    METHODOLOGY: 5,
+    DATA_COLLECTED: 6,
+    STATUS: 7,
+    SEEKING: 8,
+    TARGET_JOURNALS: 9,
+    LINK: 10,
+    CONTACT: 11,
+    TYPE_OF_PAPER: 12    // Added later, appears at end of sheet
 };
 ```
 
