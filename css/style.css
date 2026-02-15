@@ -439,6 +439,11 @@ main {
     color: var(--green);
 }
 
+.audience-tag {
+    background: rgba(139, 92, 246, 0.1);
+    color: #7c3aed;
+}
+
 .journal-tag {
     background: rgba(0, 102, 204, 0.1);
     color: var(--accent);

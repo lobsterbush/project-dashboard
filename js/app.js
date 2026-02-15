@@ -44,7 +44,8 @@ const COLUMNS = {
     TARGET_JOURNALS: 9,
     LINK: 10,
     CONTACT: 11,
-    TYPE_OF_PAPER: 12
+    TYPE_OF_PAPER: 12,
+    COLLABORATOR_AUDIENCE: 13
 };
 
 // ============================================================================
@@ -65,6 +66,7 @@ const elements = {
     filterStatus: document.getElementById('filter-status'),
     filterData: document.getElementById('filter-data'),
     filterSeeking: document.getElementById('filter-seeking'),
+    filterCollaboratorAudience: document.getElementById('filter-collaborator-audience'),
     clearFilters: document.getElementById('clear-filters'),
     submitLinkHeader: document.getElementById('submit-link-header'),
     projectsGrid: document.getElementById('projects'),
@@ -126,7 +128,8 @@ function parseCSV(csvText) {
                 seeking: row[COLUMNS.SEEKING] || '',
                 targetJournals: row[COLUMNS.TARGET_JOURNALS] || '',
                 link: row[COLUMNS.LINK] || '',
-                contact: row[COLUMNS.CONTACT] || ''
+                contact: row[COLUMNS.CONTACT] || '',
+                collaboratorAudience: row[COLUMNS.COLLABORATOR_AUDIENCE] || ''
             });
         }
     }
@@ -172,6 +175,7 @@ function applyFilters() {
     const statusFilter = elements.filterStatus.value;
     const dataFilter = elements.filterData.value;
     const seekingFilter = elements.filterSeeking.value;
+    const collaboratorAudienceFilter = elements.filterCollaboratorAudience.value;
     
     filteredProjects = allProjects.filter(project => {
         // Search filter
@@ -207,6 +211,11 @@ function applyFilters() {
             return false;
         }
         
+        // Collaborator audience filter
+        if (collaboratorAudienceFilter && !project.collaboratorAudience.includes(collaboratorAudienceFilter)) {
+            return false;
+        }
+        
         return true;
     });
     
@@ -221,6 +230,7 @@ function clearFilters() {
     elements.filterStatus.value = '';
     elements.filterData.value = '';
     elements.filterSeeking.value = '';
+    elements.filterCollaboratorAudience.value = '';
     applyFilters();
 }
 
@@ -257,6 +267,7 @@ function renderProjectCard(project) {
     
     const helpNeededTags = project.seeking ? project.seeking.split(',').map(s => s.trim()).filter(s => s) : [];
     const targetJournalsList = project.targetJournals ? project.targetJournals.split(',').map(j => j.trim()).filter(j => j) : [];
+    const audienceTags = project.collaboratorAudience ? project.collaboratorAudience.split(',').map(a => a.trim()).filter(a => a) : [];
     
     return `
         <article class="project-card">
@@ -311,6 +322,18 @@ function renderProjectCard(project) {
                 </div>
                 <div class="info-tags">
                     ${helpNeededTags.map(s => `<span class="info-tag help-tag">${escapeHtml(s)}</span>`).join('')}
+                </div>
+            </div>
+            ` : ''}
+            
+            ${audienceTags.length > 0 ? `
+            <div class="info-section">
+                <div class="info-header">
+                    <span class="meta-icon">👥</span>
+                    <span class="meta-label">Seeking collaborators from</span>
+                </div>
+                <div class="info-tags">
+                    ${audienceTags.map(a => `<span class="info-tag audience-tag">${escapeHtml(a)}</span>`).join('')}
                 </div>
             </div>
             ` : ''}
@@ -419,6 +442,20 @@ function populateDynamicFilters() {
         option.textContent = s;
         elements.filterSeeking.appendChild(option);
     });
+    
+    // Get unique "collaborator audience" values
+    const audienceValues = new Set();
+    allProjects.forEach(p => {
+        if (p.collaboratorAudience) {
+            p.collaboratorAudience.split(',').forEach(a => audienceValues.add(a.trim()));
+        }
+    });
+    [...audienceValues].sort().forEach(a => {
+        const option = document.createElement('option');
+        option.value = a;
+        option.textContent = a;
+        elements.filterCollaboratorAudience.appendChild(option);
+    });
 }
 
 // ============================================================================
@@ -464,6 +501,7 @@ function setupEventListeners() {
     elements.filterStatus.addEventListener('change', applyFilters);
     elements.filterData.addEventListener('change', applyFilters);
     elements.filterSeeking.addEventListener('change', applyFilters);
+    elements.filterCollaboratorAudience.addEventListener('change', applyFilters);
     
     // Clear filters button
     elements.clearFilters.addEventListener('click', clearFilters);

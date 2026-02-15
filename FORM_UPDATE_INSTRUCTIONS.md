@@ -39,6 +39,15 @@ To complete the Research Backlog updates, you need to manually update the Google
 - Keep all existing checkbox options (Coauthors, Methods expertise, Funding, Data access, etc.)
 - Only change the question label/title
 
+### 6. Add new question after "Contact email"
+**Question 14: Seeking collaborators from**
+- Question type: Checkboxes (multiple selection)
+- Options:
+  - Anyone
+  - Senior staff
+  - HDRs
+  - Early career staff
+
 ## After Making Changes
 
 1. The Google Sheet will automatically update with new columns
@@ -57,10 +66,10 @@ To complete the Research Backlog updates, you need to manually update the Google
    11. Project link
    12. Contact email
    13. Type of paper
+   14. Seeking collaborators from
    
    Note: Google Forms adds new questions to existing linked sheets at the END,
-   regardless of where they appear in the form. This is why "Type of paper"
-   appears last even though it's question 4 in the form.
+   regardless of where they appear in the form.
 
 4. The website will automatically fetch the updated data on next page load
 

@@ -45,8 +45,9 @@ Google Form → Google Sheets → GitHub Pages (fetches CSV on load)
 11. Project link
 12. Contact email
 13. Type of paper (Empirical/Theoretical/Empirical and theoretical)
+14. Seeking collaborators from (Anyone/Senior staff/HDRs/Early career staff)
 
-**Note**: Type of paper appears last because Google Forms adds new questions to existing linked sheets at the end, regardless of where they appear in the form (it's question 4 in the form but column 13 in the sheet).
+**Note**: Google Forms adds new questions to existing linked sheets at the end, regardless of where they appear in the form.
 
 ## Files
 
@@ -114,6 +115,11 @@ CNAME: www → lobsterbush.github.io
 12. Dynamics of Contentious Politics (ML on Francisco data)
 
 ## Recent Updates
+
+### February 15, 2026
+- Added "Seeking collaborators from" field (Anyone/Senior staff/HDRs/Early career staff)
+- Multi-select checkboxes, displayed as purple tags on project cards
+- New filter dropdown for collaborator audience
 
 ### February 13, 2026
 - Added "Type of paper" field (Empirical/Theoretical/Empirical and theoretical)
