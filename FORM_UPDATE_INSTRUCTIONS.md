@@ -39,8 +39,8 @@ To complete the Research Backlog updates, you need to manually update the Google
 - Keep all existing checkbox options (Coauthors, Methods expertise, Funding, Data access, etc.)
 - Only change the question label/title
 
-### 6. Add new question after "Contact email"
-**Question 14: Seeking collaborators from**
+### 6. Add new question before "Target journals"
+**Question 10: Seeking collaborators from**
 - Question type: Checkboxes (multiple selection)
 - Options:
   - Anyone
