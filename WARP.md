@@ -3,21 +3,24 @@
 **URL**: https://researchbacklog.org  
 **Repo**: https://github.com/lobsterbush/project-dashboard  
 **Created**: February 11, 2026  
-**Last Updated**: February 15, 2026
+**Last Updated**: March 8, 2026
 **Password**: `erdosrules`
 
 ## Overview
 
-A filterable dashboard for sharing dormant research ideas and fallow datasets with potential collaborators. Built for Monash University Political Science and International Relations staff.
+A filterable dashboard for sharing dormant research ideas, fallow datasets, and grant applications with potential collaborators. Built for Monash University Political Science and International Relations staff. The dashboard has two tabs: **Projects** (research ideas/data) and **Grants** (grant applications for collaboration).
 
 ## Architecture
 
 ```
-Google Form → Google Sheets → GitHub Pages (fetches CSV on load)
+Google Forms (×2) → Google Sheets (2 tabs) → GitHub Pages (fetches CSV on load)
 ```
 
-- **Form**: https://docs.google.com/forms/d/e/1FAIpQLSe8guiY6444i5NTC86ROLXzd5kWNUZmhLqUrWWXFvfQzpw1sw/viewform
+- **Projects Form**: https://docs.google.com/forms/d/e/1FAIpQLSe8guiY6444i5NTC86ROLXzd5kWNUZmhLqUrWWXFvfQzpw1sw/viewform
+- **Grants Form**: TODO — create per `FORM_UPDATE_INSTRUCTIONS.md`
 - **Sheet ID**: `1wC57FDGLijnPiXQ6NIpGmiVWicnuOT1HwMBlnh-W_PY`
+  - Tab "Form Responses 1" → projects
+  - Tab "Grant Responses" → grants
 - **Domain**: researchbacklog.org (Namecheap → GitHub Pages)
 
 ## Managing Projects
@@ -49,6 +52,33 @@ Google Form → Google Sheets → GitHub Pages (fetches CSV on load)
 
 **Note**: Google Forms adds new questions to existing linked sheets at the end, regardless of where they appear in the form.
 
+## Managing Grants
+
+### Add a grant
+1. Submit via Grants Google Form, OR
+2. Add row directly to "Grant Responses" tab in Google Sheet
+
+### Edit/delete a grant
+1. Open Google Sheet → "Grant Responses" tab
+2. Edit or delete the row
+3. Changes appear on next page load (no deploy needed)
+
+### Grant sheet columns (in order)
+1. Timestamp
+2. Grant title
+3. Description
+4. Keywords (comma-separated)
+5. (Sub-)discipline
+6. Type (Reviving past application / New idea)
+7. Previous funder (optional)
+8. Previous submission year (optional)
+9. Target funder
+10. Funding amount (approx., optional)
+11. Help needed (CI/co-investigator, Methods expertise, Area expertise, Budget/admin support, Writing help, Industry partner, Other)
+12. Seeking collaborators from (Anyone/Senior staff/HDRs/Early career staff)
+13. Project link (optional)
+14. Contact email
+
 ## Files
 
 ```
@@ -75,8 +105,10 @@ Edit `js/app.js` CONFIG object:
 const CONFIG = {
     SHEET_ID: '1wC57FDGLijnPiXQ6NIpGmiVWicnuOT1HwMBlnh-W_PY',
     SHEET_NAME: 'Form Responses 1',
+    GRANTS_SHEET_NAME: 'Grant Responses',
     FORM_URL: 'https://docs.google.com/forms/d/e/.../viewform',
-    USE_DEMO_DATA: false,  // Set true to use local CSV instead
+    GRANTS_FORM_URL: '',  // TODO: Add after creating grants form
+    USE_DEMO_DATA: false,
     DEMO_DATA_URL: 'data/seed_projects.csv'
 };
 ```
@@ -115,6 +147,15 @@ CNAME: www → lobsterbush.github.io
 12. Dynamics of Contentious Politics (ML on Francisco data)
 
 ## Recent Updates
+
+### March 8, 2026
+- Added **Grants tab** to dashboard (Projects / Grants toggle)
+- Grants support: separate Google Form, separate sheet tab, dedicated card layout
+- Grant cards show type (Revival / New idea), target funder, funding amount, previous submission history
+- Grant-specific filters: Type, Target Funder
+- Shared filters work across both tabs: Discipline, Help needed, Seeking from
+- Grants fetch fails gracefully if sheet tab doesn't exist yet
+- Updated `FORM_UPDATE_INSTRUCTIONS.md` with full grants form creation guide
 
 ### February 15, 2026
 - Added "Seeking collaborators from" field (Anyone/Senior staff/HDRs/Early career staff)

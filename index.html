@@ -20,53 +20,29 @@
 
     <header>
         <h1>Research Backlog</h1>
-        <p class="subtitle">Dormant ideas and fallow data seeking collaborators</p>
+        <p class="subtitle" id="subtitle">Dormant ideas and fallow data seeking collaborators</p>
         <div class="header-actions">
             <a href="#" id="submit-link-header" class="btn-primary btn-large" target="_blank">Submit a Project</a>
         </div>
     </header>
 
     <main>
+        <nav class="tab-toggle">
+            <button class="tab-btn active" data-tab="projects">Projects</button>
+            <button class="tab-btn" data-tab="grants">Grants</button>
+        </nav>
+
         <section class="controls">
             <div class="search-container">
-                <input type="text" id="search" placeholder="Search projects..." aria-label="Search projects">
+                <input type="text" id="search" placeholder="Search projects..." aria-label="Search">
             </div>
             
             <div class="filters">
-                <div class="filter-group">
-                    <label for="filter-type-of-paper">Type of Paper</label>
-                    <select id="filter-type-of-paper">
-                        <option value="">All Types</option>
-                    </select>
-                </div>
-                
+                <!-- Shared filters -->
                 <div class="filter-group">
                     <label for="filter-discipline">(Sub-)discipline</label>
                     <select id="filter-discipline">
                         <option value="">All Disciplines</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="filter-status">Status</label>
-                    <select id="filter-status">
-                        <option value="">All Statuses</option>
-                        <option value="Idea only">Idea only</option>
-                        <option value="Data collected">Data collected</option>
-                        <option value="Partial draft">Partial draft</option>
-                        <option value="Outline">Outline</option>
-                        <option value="Stalled">Stalled</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <label for="filter-data">Data Collected</label>
-                    <select id="filter-data">
-                        <option value="">Any</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        <option value="Partial">Partial</option>
-                        <option value="N/A">N/A</option>
                     </select>
                 </div>
                 
@@ -81,6 +57,54 @@
                     <label for="filter-collaborator-audience">Seeking from</label>
                     <select id="filter-collaborator-audience">
                         <option value="">All</option>
+                    </select>
+                </div>
+
+                <!-- Project-only filters -->
+                <div class="filter-group project-filter">
+                    <label for="filter-type-of-paper">Type of Paper</label>
+                    <select id="filter-type-of-paper">
+                        <option value="">All Types</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group project-filter">
+                    <label for="filter-status">Status</label>
+                    <select id="filter-status">
+                        <option value="">All Statuses</option>
+                        <option value="Idea only">Idea only</option>
+                        <option value="Data collected">Data collected</option>
+                        <option value="Partial draft">Partial draft</option>
+                        <option value="Outline">Outline</option>
+                        <option value="Stalled">Stalled</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group project-filter">
+                    <label for="filter-data">Data Collected</label>
+                    <select id="filter-data">
+                        <option value="">Any</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Partial">Partial</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+
+                <!-- Grant-only filters -->
+                <div class="filter-group grant-filter" style="display:none;">
+                    <label for="filter-grant-type">Type</label>
+                    <select id="filter-grant-type">
+                        <option value="">All</option>
+                        <option value="Reviving past application">Revival</option>
+                        <option value="New idea">New idea</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group grant-filter" style="display:none;">
+                    <label for="filter-target-funder">Target Funder</label>
+                    <select id="filter-target-funder">
+                        <option value="">All Funders</option>
                     </select>
                 </div>
             </div>

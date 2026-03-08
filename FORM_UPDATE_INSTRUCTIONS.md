@@ -78,3 +78,130 @@ To complete the Research Backlog updates, you need to manually update the Google
 - The code has already been updated to handle the new fields
 - Make sure questions are in the exact order listed above
 - If you reorder questions, you'll need to update the `COLUMNS` object in `js/app.js`
+
+---
+
+# Creating the Grants Google Form
+
+A separate Google Form is needed for grant applications. This form should be linked to a **new tab** in the existing Google Sheet.
+
+## Step 1: Create a new Google Form
+
+Create a new form with the title **"Research Backlog: Grant Applications"** and add these fields in order:
+
+### Question 1: Grant title
+- Type: Short answer
+- Required: Yes
+
+### Question 2: Description
+- Type: Paragraph
+- Required: Yes
+- Description hint: "Describe the grant idea. If reviving a past application, explain what was submitted and what could be improved."
+
+### Question 3: Keywords
+- Type: Short answer
+- Required: No
+- Description hint: "Comma-separated keywords"
+
+### Question 4: (Sub-)discipline
+- Type: Dropdown
+- Required: Yes
+- Options:
+  - Political Science
+  - Comparative Politics
+  - International Relations
+  - Political Theory
+  - Methodology
+  - Sociology
+  - Economics
+  - Other
+
+### Question 5: Type
+- Type: Dropdown
+- Required: Yes
+- Options:
+  - Reviving past application
+  - New idea
+
+### Question 6: Previous funder
+- Type: Short answer
+- Required: No
+- Description hint: "If reviving a past application, which funder was it submitted to?"
+
+### Question 7: Previous submission year
+- Type: Short answer
+- Required: No
+- Description hint: "If reviving, what year was it submitted?"
+
+### Question 8: Target funder
+- Type: Short answer
+- Required: No
+- Description hint: "e.g. ARC Discovery, DECRA, Endeavour, etc."
+
+### Question 9: Funding amount (approx.)
+- Type: Short answer
+- Required: No
+
+### Question 10: Help needed
+- Type: Checkboxes (multiple selection)
+- Required: No
+- Options:
+  - CI/co-investigator
+  - Methods expertise
+  - Area expertise
+  - Budget/admin support
+  - Writing help
+  - Industry partner
+  - Other
+
+### Question 11: Seeking collaborators from
+- Type: Checkboxes (multiple selection)
+- Required: No
+- Options:
+  - Anyone
+  - Senior staff
+  - HDRs
+  - Early career staff
+
+### Question 12: Project link
+- Type: Short answer
+- Required: No
+
+### Question 13: Contact email
+- Type: Short answer
+- Required: Yes
+
+## Step 2: Link to the existing Google Sheet
+
+1. In the form, click the **Responses** tab
+2. Click the green Sheets icon ("Link to Sheets")
+3. Choose **"Select existing spreadsheet"**
+4. Select the Research Backlog spreadsheet (`1wC57FDGLijnPiXQ6NIpGmiVWicnuOT1HwMBlnh-W_PY`)
+5. A new tab called **"Grant Responses"** will be created automatically
+
+## Step 3: Update the dashboard config
+
+1. Copy the form's shareable link
+2. Open `js/app.js`
+3. Update `CONFIG.GRANTS_FORM_URL` with the new form URL
+4. If the sheet tab name differs from "Grant Responses", update `CONFIG.GRANTS_SHEET_NAME`
+
+## Step 4: Verify column order
+
+The Grant Responses sheet columns should be (in order):
+1. Timestamp
+2. Grant title
+3. Description
+4. Keywords
+5. (Sub-)discipline
+6. Type
+7. Previous funder
+8. Previous submission year
+9. Target funder
+10. Funding amount (approx.)
+11. Help needed
+12. Seeking collaborators from
+13. Project link
+14. Contact email
+
+If columns are in a different order, update `GRANT_COLUMNS` in `js/app.js`.

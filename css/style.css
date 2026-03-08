@@ -138,6 +138,43 @@ h1 {
     color: var(--accent);
 }
 
+/* Tab Toggle */
+.tab-toggle {
+    max-width: var(--max-width);
+    margin: 0 auto 1.5rem;
+    display: flex;
+    gap: 0;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid var(--border);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.tab-btn.active {
+    background: var(--bg-card);
+    color: var(--accent);
+    box-shadow: 0 1px 4px var(--shadow);
+    font-weight: 600;
+}
+
 /* Main Container */
 main {
     max-width: var(--max-width);
@@ -530,6 +567,32 @@ main {
 .status-stalled {
     background: rgba(239, 68, 68, 0.1);
     color: #dc2626;
+}
+
+.grant-type-revival {
+    background: rgba(245, 158, 11, 0.1);
+    color: #b45309;
+}
+
+.grant-type-new {
+    background: var(--green-subtle);
+    color: var(--green);
+}
+
+/* Grant Card Extras */
+.grant-card {
+    border-left: 3px solid var(--accent);
+}
+
+.grant-history {
+    border-left: 3px solid rgba(245, 158, 11, 0.3);
+}
+
+.grant-history-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* Loading & Error States */
