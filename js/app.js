@@ -57,15 +57,13 @@ const GRANT_COLUMNS = {
     DESCRIPTION: 2,
     KEYWORDS: 3,
     DISCIPLINE: 4,
-    TYPE: 5,           // "Reviving past application" or "New idea"
-    PREV_FUNDER: 6,
-    PREV_YEAR: 7,
-    TARGET_FUNDER: 8,
-    AMOUNT: 9,
-    SEEKING: 10,
-    COLLABORATOR_AUDIENCE: 11,
-    LINK: 12,
-    CONTACT: 13
+    TYPE: 5,               // "Reviving past application" or "New idea"
+    TARGET_FUNDER: 6,
+    AMOUNT: 7,
+    SEEKING: 8,
+    COLLABORATOR_AUDIENCE: 9,
+    LINK: 10,
+    CONTACT: 11
 };
 
 // ============================================================================
@@ -179,8 +177,6 @@ function parseGrantCSV(csvText) {
                 keywords: row[GRANT_COLUMNS.KEYWORDS] || '',
                 discipline: row[GRANT_COLUMNS.DISCIPLINE] || '',
                 type: row[GRANT_COLUMNS.TYPE] || '',
-                prevFunder: row[GRANT_COLUMNS.PREV_FUNDER] || '',
-                prevYear: row[GRANT_COLUMNS.PREV_YEAR] || '',
                 targetFunder: row[GRANT_COLUMNS.TARGET_FUNDER] || '',
                 amount: row[GRANT_COLUMNS.AMOUNT] || '',
                 seeking: row[GRANT_COLUMNS.SEEKING] || '',
@@ -492,19 +488,6 @@ function renderGrantCard(grant) {
                 </div>
                 ` : ''}
             </div>
-            
-            ${grant.prevFunder || grant.prevYear ? `
-            <div class="info-section grant-history">
-                <div class="info-header">
-                    <span class="meta-icon">📋</span>
-                    <span class="meta-label">Previous submission</span>
-                </div>
-                <p class="grant-history-text">
-                    ${grant.prevFunder ? `Submitted to <strong>${escapeHtml(grant.prevFunder)}</strong>` : ''}
-                    ${grant.prevYear ? `(${escapeHtml(grant.prevYear)})` : ''}
-                </p>
-            </div>
-            ` : ''}
             
             ${helpNeededTags.length > 0 ? `
             <div class="info-section">
