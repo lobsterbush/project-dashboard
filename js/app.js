@@ -15,11 +15,11 @@ const CONFIG = {
     SHEET_NAME: 'Form Responses 1',
     
     // The sheet/tab name for grants (created by the grants Google Form)
-    GRANTS_SHEET_NAME: 'Grant Responses',
+    GRANTS_SHEET_NAME: 'Grant responses',
     
     // Google Form URLs
     FORM_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSe8guiY6444i5NTC86ROLXzd5kWNUZmhLqUrWWXFvfQzpw1sw/viewform',
-    GRANTS_FORM_URL: '', // TODO: Add grants form URL after creating the form
+    GRANTS_FORM_URL: 'https://docs.google.com/forms/d/e/1FAIpQLSe1cSgiZ2YjQC7ahZ4DkK6B4BmhG9oGd_KCO4qMFOV_44drrA/viewform',
     
     // Google Sheets API key (optional - only needed if sheet is not published to web)
     API_KEY: '',
