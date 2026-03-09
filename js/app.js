@@ -12,7 +12,7 @@ const CONFIG = {
     SHEET_ID: '1wC57FDGLijnPiXQ6NIpGmiVWicnuOT1HwMBlnh-W_PY',
     
     // The sheet/tab name for projects
-    SHEET_NAME: 'Form Responses 1',
+    SHEET_NAME: 'Project responses',
     
     // The sheet/tab name for grants (created by the grants Google Form)
     GRANTS_SHEET_NAME: 'Grant responses',
