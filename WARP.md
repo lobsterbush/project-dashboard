@@ -3,7 +3,7 @@
 **URL**: https://researchbacklog.org  
 **Repo**: https://github.com/lobsterbush/project-dashboard  
 **Created**: February 11, 2026  
-**Last Updated**: March 8, 2026
+**Last Updated**: March 10, 2026
 **Password**: `erdosrules`
 
 ## Overview
@@ -146,7 +146,33 @@ CNAME: www → lobsterbush.github.io
 11. European Protest Event Data (Francisco dataset)
 12. Dynamics of Contentious Politics (ML on Francisco data)
 
+## Scaling Roadmap
+
+Discussed March 10, 2026. Core concern for broader adoption: **idea theft**.
+
+### Phase 1 — Trust architecture (priority)
+- Tiered visibility: title only (public) → summary (verified) → full details (owner-approved)
+- Restrict access to institutional email accounts (replace client-side password with real auth)
+- Auto-display submission timestamp on every card (priority protection)
+- Audit log: record who views/requests each idea
+- Optional OSF pre-registration link field for formal priority claim
+- Clear terms of use: viewing ≠ right to execute independently
+
+### Phase 2 — Multi-institution rollout
+- Package as a deployable template ("department-in-a-box")
+- Each institution runs its own instance (own data, branding, access control)
+- Cross-institution federation only for entries explicitly opted in
+
+### Phase 3 — Productization (only if demand proven)
+- Migrate from static/Sheets to proper backend (Supabase or Firebase)
+- Request/approval workflows for accessing full project details
+- Institutional admin panel
+
 ## Recent Updates
+
+### March 10, 2026
+- Assessed scaling potential and IP protection requirements (see Scaling Roadmap above)
+- Visual design: experimented with greyscale design system and animated gradients; reverted to original color scheme
 
 ### March 8, 2026
 - Added **Grants tab** to dashboard (Projects / Grants toggle)
